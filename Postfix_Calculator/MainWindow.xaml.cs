@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-namespace MLTA_2_6
+namespace Postfix_Calculator
 {
     public partial class MainWindow : Window
     {
         private Dictionary<char, bool> values = new Dictionary<char, bool>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -16,6 +17,7 @@ namespace MLTA_2_6
                 values.Add(tmp[i], false);
             }
         }
+
         /// <summary>
         /// Нажатие кнопок на панели
         /// </summary>
@@ -41,6 +43,7 @@ namespace MLTA_2_6
                     return;
             }
         }
+
         /// <summary>
         /// Подтверждение
         /// </summary>
@@ -50,13 +53,14 @@ namespace MLTA_2_6
             textBoxPrefix.Text = r.ToPostfix(textBoxInfix.Text);
             resultFrame.Navigate(r);
         }
+
         /// <summary>
         /// Смена значения переменной на противоположное
         /// </summary>
         private void ChangeChecked(object sender, RoutedEventArgs e)
         {
-           CheckBox checkBox = (CheckBox)sender;
-           values[Convert.ToChar(checkBox.Uid)] = (bool)checkBox.IsChecked;
+            CheckBox checkBox = (CheckBox)sender;
+            values[Convert.ToChar(checkBox.Uid)] = (bool)checkBox.IsChecked;
         }
     }
 }

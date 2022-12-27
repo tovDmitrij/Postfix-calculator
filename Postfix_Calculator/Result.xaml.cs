@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-namespace MLTA_2_6
+namespace Postfix_Calculator
 {
     /// <summary>
     /// Вычисление пропозициональной формулы, находящейся в постфиксной записи
@@ -11,6 +11,7 @@ namespace MLTA_2_6
     public partial class Result : Page
     {
         private string infixNotation;
+
         /// <summary>
         /// Вычисление пропозициональной формулы, находящейся в постфиксной записи
         /// </summary>
@@ -29,11 +30,11 @@ namespace MLTA_2_6
             this.infixNotation = ToPostfix(infixNotation);
             textResult.Text = FunctionResult(values) ? "1" : "0";
         }
+
         /// <summary>
         /// Результат функции при входных параметрах
         /// </summary>
         /// <param name="row">Входные параметры</param>
-        /// <returns>Булевое значение</returns>
         private bool FunctionResult(Dictionary<char, bool> row)
         {
             Stack<bool> stack = new Stack<bool>();
@@ -78,10 +79,10 @@ namespace MLTA_2_6
             }
             return stack.Peek();
         }
+
         /// <summary>
         /// Преобразование инфиксной записи в постфиксную
         /// </summary>
-        /// <returns>Результат преобразования</returns>
         public string ToPostfix(string infixNotation)
         {
             switch (CheckInfix(infixNotation))
@@ -160,11 +161,11 @@ namespace MLTA_2_6
             }
             return postfix;
         }
+
         /// <summary>
         /// Приоритет операции
         /// </summary>
         /// <param name="operation">Операция</param>
-        /// <returns>Приоритет</returns>
         private static int Priority(char operation)
         {
             switch (operation)
@@ -181,11 +182,11 @@ namespace MLTA_2_6
                     return 0;
             }
         }
+
         /// <summary>
         /// Проверка на правильность написания инфиксной нотации
         /// </summary>
         /// <param name="infixNotation">Инфиксная запись</param>
-        /// <returns>Булевое значение</returns>
         public static bool CheckInfix(string infixNotation)
         {
             char[] operators = { '(', ')', '⋁', '⋀', '→', '↔', '¬', '⊕' };
